@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"
+      defer
+    ></script>
+    <script src="./js/script.js" defer></script>
+    <!-- Favicon Icon -->
+    <link href="img/favicon.png" rel="icon">
+    <link rel="shortcut icon" href="img/apple-touch-icon.png" type="image/x-icon">
+    <title>Bukuku App</title>
+  </head>
+  <body>
+    <header>
+      <div class="container container-header">
+        <h1 class="site-name">BukuKu</h1>
+        <a
+          href="https://github.com/hardihardi"
+          target="_blank"
+          class="github-link"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            style="fill: #fff"
+            class="github-icon"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Form tambah buku -->
+      <section class="form-section">
+        <h2 class="form-name">Tambah Buku Baru</h2>
+        <form id="addBookForm">
+          <div class="form-control">
+            <label for="title">Judul</label>
+            <input
+              type="text"
+              placeholder="Masukan judul buku"
+              id="title"
+              required
+              class="field-input"
+            />
+            <p class="invalid-feedback" style="display: none"></p>
+          </div>
+          <div class="form-control">
+            <label for="author">Penulis</label>
+            <input
+              type="text"
+              placeholder="Masukan penulis buku"
+              id="author"
+              required
+              class="field-input"
+            />
+          </div>
+          <div class="form-control">
+            <label for="year">Tahun</label>
+            <input
+              type="number"
+              placeholder="Masukan tahun buku"
+              id="year"
+              required
+              class="field-input"
+            />
+          </div>
+          <div class="form-control form-check">
+            <label for="isCompleted"> Selesai dibaca </label>
+            <input type="checkbox" id="isCompleted" />
+          </div>
+          <button type="submit" class="btn btn-block btn-primary">
+            Simpan
+          </button>
+        </form>
+      </section>
+
+      <!-- Form Search Buku -->
+      <section class="search-section">
+        <div class="search-box">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            class="search-icon"
+          >
+            <path
+              d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"
+            ></path>
+          </svg>
+          <input
+            type="search"
+            placeholder="Cari judul buku..."
+            class="field-input"
+            id="inputKeywordBook"
+          />
+        </div>
+      </section>
+
+      <section class="filter-section">
+        <ul class="tabs-category">
+          <li class="tab-item">
+            <button class="btn active" data-target="#allBooks">Semua</button>
+          </li>
+          <li class="tab-item">
+            <button class="btn" data-target="#unCompletedBooks">Belum</button>
+          </li>
+          <li class="tab-item">
+            <button class="btn" data-target="#completedBooks">Selesai</button>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active book-list" id="allBooks"></div>
+          <div class="tab-pane book-list" id="unCompletedBooks"></div>
+          <div class="tab-pane book-list" id="completedBooks"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal Edit Buku -->
+    <dialog class="modal" id="modalEditBook" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Data Buku</h5>
+          </div>
+          <div class="modal-body">
+            <form id="editBookForm">
+              <input type="hidden" name="bookId" id="bookId" required />
+              <div class="form-control">
+                <label for="editTitle">Judul</label>
+                <input
+                  type="text"
+                  placeholder="Masukan judul buku"
+                  id="editTitle"
+                  class="field-input"
+                />
+                <p class="invalid-feedback" style="display: none"></p>
+              </div>
+              <div class="form-control">
+                <label for="editAuthor">Penulis</label>
+                <input
+                  type="text"
+                  placeholder="Masukan penulis buku"
+                  id="editAuthor"
+                  required
+                  class="field-input"
+                />
+              </div>
+              <div class="form-control">
+                <label for="editYear">Tahun</label>
+                <input
+                  type="number"
+                  placeholder="Masukan tahun buku"
+                  id="editYear"
+                  required
+                  class="field-input"
+                />
+              </div>
+              <div class="form-control form-check">
+                <label for="editIsCompleted"> Selesai dibaca </label>
+                <input type="checkbox" id="editIsCompleted" />
+              </div>
+              <div class="cta">
+                <button
+                  type="button"
+                  class="btn btn-block btn-secondary"
+                  id="closeModalBook"
+                >
+                  Batal
+                </button>
+                <button type="submit" class="btn btn-block btn-primary">
+                  Simpan
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <footer class="container">
+      <p class="copyright">
+        Created with ❤️ by
+        <a href="https://hardianto.skom.id/" target="_blank">Hardianto</a>
+      </p>
+    </footer>
+  </body>
+</html>
